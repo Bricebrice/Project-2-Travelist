@@ -13,20 +13,25 @@ const userSchema = new Schema(
     },
     username: {
       type: String,
-      required: true,
+      trim: true,
+      required: [true, "Username is required."],
+      unique: true,
     },
     email: {
       type: String,
-      required: true,
+      required: [true, "Email is required."],
       unique: true,
       lowercase: true,
+      trim: true,
     },
     passwordHash: {
       type: String,
-      required: true,
+      required: [true, "Password is required."],
     },
     profileImage: {
       type: String,
+      default:
+        "https://flyclipart.com/thumb2/account-avatar-head-human-male-man-people-person-profile-873990.png",
     },
   },
   {
@@ -35,5 +40,4 @@ const userSchema = new Schema(
 );
 
 const User = mongoose.model("User", userSchema);
-
 module.exports = User;
