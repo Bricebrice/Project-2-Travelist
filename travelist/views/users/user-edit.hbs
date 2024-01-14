@@ -1,0 +1,39 @@
+
+<div id="form">
+  <h2>Edit Profile</h2>
+  <form action="/userProfile/edit" method="POST" enctype="multipart/form-data">
+   <label>Image:
+          <input type="file" name="profileImage" class="form-control-file" />
+          <input type="text" name="existingImage" hidden value="{{userInSession.profileImage}}">
+    <label>
+      First name
+      <input type="text" name="firstName" placeholder="James" />
+    </label>
+
+    <label>
+      Last name
+      <input type="text" name="lastName" placeholder="Cook" />
+    </label>
+
+    <label>
+      Username
+      <input type="text" name="username" placeholder="James Cookies" />
+    </label>
+
+    <label>
+      Email
+      <input type="email" name="email" placeholder="james-cook@world.com" />
+    </label>
+
+    <label>
+      Password
+      <input type="password" name="password" placeholder="********" />
+    </label>
+
+    <button type="submit">Save changes</button>
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
