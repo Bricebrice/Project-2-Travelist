@@ -8,10 +8,10 @@ const router = new Router();
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
 
-// GET route ==> to display the signup form to users
+// GET signup route ==> to display the signup form to users
 router.get("/signup", isLoggedOut, (req, res) => res.render("auth/signup"));
 
-// POST route ==> to process form data
+// POST signup route ==> to process form data
 router.post("/signup", isLoggedOut, (req, res, next) => {
   console.log("The form data: ", req.body);
 
@@ -31,8 +31,8 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
       });
     })
     .then((userFromDB) => {
-      console.log("Newly created user is: ", userFromDB);
-      res.redirect("/userProfile");
+      // console.log("Newly created user is: ", userFromDB);
+      res.redirect("/userProfile/:userId");
     })
     .catch((error) => next(error));
 });

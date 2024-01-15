@@ -5,7 +5,7 @@
     <a href="/userProfile">Reload the page</a>
   </button>
   <button>
-    <a href="/userProfile/edit">Edit Profile</a>
+    <a href="/userProfile/{{userInSession._id}}/edit">Edit Profile</a>
   </button>
 {{else}}
   <p>Still no logged in user, sorry!</p>
