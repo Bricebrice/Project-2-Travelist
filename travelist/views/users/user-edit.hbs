@@ -36,4 +36,7 @@
       <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
+  <form action="/userProfile/{{userInSession._id}}/delete" method="POST">
+  <button>Delete account</button>
+  </form>
 </div>
