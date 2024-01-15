@@ -32,7 +32,8 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
     })
     .then((userFromDB) => {
       // console.log("Newly created user is: ", userFromDB);
-      res.redirect("/userProfile/:userId");
+      req.session.currentUser = userFromDB;
+      res.redirect("/userProfile");
     })
     .catch((error) => next(error));
 });
@@ -84,6 +85,7 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
 router.post("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy((err) => {
     if (err) next(err);
+    // TO REMOVE - no aqui pero la idea es user.findbyIdandDelete y luego redirect
     res.redirect("/");
   });
 });
