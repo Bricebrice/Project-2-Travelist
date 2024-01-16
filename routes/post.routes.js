@@ -23,7 +23,7 @@ router.get('/explore/posts/create', isLoggedIn, (req,res) => { res.render('posts
 router.post('/explore/posts/create', isLoggedIn, fileUploader.single('day-images'), (req,res) => {
     const {name, location, duration, distance, typeOfTrip, activities} = req.body;
 
-    Post.create({name,location,duration,distance,typeOfTrip,activities, createdBy: req.session.currentUser, savedBy: req.session.currentUser})
+    Post.create({name,location,duration,distance,typeOfTrip,activities, createdBy: req.session.currentUser})
     .then(newPostFromDB => res.redirect('/explore/posts'))
 
 
