@@ -2,16 +2,16 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
-  {
+  { name: String,
     location: {
       type: String,
       required: true,
     },
     duration: Number,
     distance: Number,
-    typeOfRoadtrip: {
+    typeOfTrip: {
       type: String,
-      enum: ["Escape trip", "Spa trip", "Honeymoon", "Cultural"],
+      enum: ["Escape trip", "Spa trip", "Honeymoon", "Cultural Trip", "Road Trip"],
     },
     activities: {
       type: [String],
@@ -26,13 +26,13 @@ const postSchema = new Schema(
       },
     ],
     createdBy: {
-      type: Schema.Type.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
     savedBy: [
       {
-        type: Schema.Types.OjectId,
+        type: Schema.Types.ObjectId,
         ref: "User",
       },
     ],

@@ -39,6 +39,10 @@ app.use("/", authRouter);
 const userRouter = require("./routes/user.routes");
 app.use("/", userRouter);
 
+//postRouter
+const postRouter= require("./routes/post.routes");
+app.use("/", postRouter);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

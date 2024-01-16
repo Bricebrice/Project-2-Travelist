@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema(
   {
     author: {
-      type: Schema.Type.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
@@ -15,7 +15,7 @@ const commentSchema = new Schema(
       max: 5,
     },
     post: {
-      type: Schema.Type.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Post",
       required: true,
     },

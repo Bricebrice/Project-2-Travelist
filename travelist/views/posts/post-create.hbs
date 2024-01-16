@@ -1,0 +1,32 @@
+<h3>Create a new post</h3>
+
+<form action="/explore/posts/create" method="post" enctype="multipart/form-data">
+    <label>Name of your trip:
+        <input type="text" name="name" placeholder="Add post name">
+    </label>
+    <label> Location:
+        <input type="text" name="location" placeholder="Add location">
+    </label>
+    <label> Duration:
+       <input type="text" name="duration" placeholder="Add duration in days"> 
+    </label>
+    <label>Distance:
+        <input type="text" name="distance" placeholder="Add distance in km">
+    </label>
+    <label> Type of Trip
+        <select name="typeOfTrip">
+            <option>Escape trip</option>
+             <option>Spa trip</option>
+            <option>Honeymoon</option>
+            <option>Cultural Trip</option> 
+            <option>Road Trip</option>
+        </select>
+    </label>
+    <label>
+        <input type="text" name="activities" placeholder="Add activities">
+    </label>
+    {{!-- <label>Itinerary
+
+    </label> --}}
+<button type="submit">Create post</button>
+</form>
