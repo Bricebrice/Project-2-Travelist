@@ -1,29 +1,32 @@
+
+{{#if post.length}}
 {{#each post}}
 <ul>
     <li>
         <strong>
-            {{name}}
+            {{this.name}}
         </strong>
     </li>
     <li>
-        {{location}}
+        {{this.location}}
     </li>
     <li>
-        {{duration}} days
+        {{this.duration}} days
     </li>
     <li>
-        {{distance}} km
+        {{this.distance}} km
     </li>
     <li>
-        {{typeOfRoadtrip}}
+        {{this.typeOfTrip}}
     </li>
     <li>
-        {{activities}}
-    </li>
-    <li>
-        {{itinerary}}
+        {{this.itinerary}}
     </li>
 </ul>
 {{/each}}
+
+{{else}}
+{{/if}}
+
 
 <a href="/explore/posts/create"> Create new post</a>

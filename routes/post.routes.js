@@ -10,7 +10,7 @@ const fileUploader = require("../config/cloudinary.config");
 router.get('/explore/posts', (req,res) => {
     Post.find()
     .then((postsFromDB) => {
-        res.render('posts/post-list', {posts: postsFromDB})
+        res.render('posts/post-list', {post: postsFromDB})
     })
     .catch(err => console.log (err))
 
@@ -20,13 +20,14 @@ router.get('/explore/posts', (req,res) => {
 router.get('/explore/posts/create', isLoggedIn, (req,res) => { res.render('posts/post-create')});
 
 //POST route to submit and save form to create post
-router.post('/explore/posts/create', isLoggedIn, fileUploader.single('day-images'), (req,res) => {
+router.post('/explore/posts/create', isLoggedIn, fileUploader.single('itinerary[0].day.images'), (req,res) => {
     const {name, location, duration, distance, typeOfTrip, activities} = req.body;
 
     Post.create({name,location,duration,distance,typeOfTrip,activities, createdBy: req.session.currentUser})
     .then(newPostFromDB => res.redirect('/explore/posts'))
-
-
 })
+
+//GET route for editing post
+router.get('/explore')
 
 module.exports = router;

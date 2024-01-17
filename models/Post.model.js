@@ -13,10 +13,7 @@ const postSchema = new Schema(
       type: String,
       enum: ["Escape trip", "Spa trip", "Honeymoon", "Cultural Trip", "Road Trip"],
     },
-    activities: {
-      type: [String],
-    },
-    itinerary: [
+   itinerary: [
       {
         day: {
           location: String,

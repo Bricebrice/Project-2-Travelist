@@ -23,14 +23,7 @@
         </select>
     </label>
     <label>
-        <input type="text" name="activities" placeholder="Add activities">
-    </label>
-    <label>Itinerary
-        {{#each post.itinerary.day}}
-            <input type="text" name="location">
-            <textarea type="text" name="description">
-            <input type="file" name="images">
-        {{/each}}
+        <input type="file" name="itinerary[0].day.images" placeholder="Add image">
     </label>
 <button type="submit">Create post</button>
 </form>
