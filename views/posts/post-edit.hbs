@@ -3,16 +3,16 @@
 <form action="/explore/posts/{{post._id}}/edit" method="POST" enctype="multipart/form-data">
     
     <label>Title:</label>
-    <input type="text" name="title" placeholder="Add travel title">
+    <input type="text" name="title" placeholder="Add travel title" value="{{post.title}}">
  
     <label> Location:</label>
-    <input type="text" name="location" placeholder="Add location">
+    <input type="text" name="location" placeholder="Add location" value="{{post.location}}">
    
     <label> Duration:</label>
-    <input type="text" name="duration" placeholder="Add duration in days"> 
+    <input type="text" name="duration" placeholder="Add duration in days" value="{{post.duration}}"> 
  
     <label>Distance:</label>
-    <input type="text" name="distance" placeholder="Add distance in km">
+    <input type="text" name="distance" placeholder="Add distance in km" value="{{post.typeOfTrip}}">
  
     <label> Type of Trip: </label>
     <select name="typeOfTrip" multiple>

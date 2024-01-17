@@ -43,7 +43,8 @@ router.post('/explore/posts/:postId/edit', isLoggedIn, (req,res,next) => {
     const {title, location, duration, distance, typeOfTrip, itinerary} = req.body;
     Post.findByIdAndUpdate(postId, {title, location, duration, distance, typeOfTrip, itinerary}, {new:true})
     .then((updatedPost)=>{
-        res.redirect('/explore/posts/:postId')
+        console.log('post updated', updatedPost)
+        res.redirect('/explore/posts')
     })
     .catch((err)=> next(err))
 })
