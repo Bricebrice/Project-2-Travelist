@@ -1,0 +1,20 @@
+{{#each post}}
+    {{title}}
+    {{location}}
+    {{duration}}
+    {{distance}}
+    {{typeOfTrip}}
+    {{#each itinerary}}
+        {{#with day}}
+            {{location}}
+            {{description}}
+            {{images}}
+        {{/with}}
+    {{/each}}
+
+
+{{/each}}
+
+<button><a href="/explore/posts/{{post._id}}/edit">Edit post</a></button>
+
+

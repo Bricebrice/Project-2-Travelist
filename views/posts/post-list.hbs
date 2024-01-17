@@ -3,9 +3,8 @@
 {{#each post}}
 <ul>
     <li>
-        <strong>
-            {{this.name}}
-        </strong>
+        <h2> <a href="/explore/posts/{{_id}}">{{this.title}}</a></h2>
+¡
     </li>
     <li>
         {{this.location}}
@@ -14,13 +13,7 @@
         {{this.duration}} days
     </li>
     <li>
-        {{this.distance}} km
-    </li>
-    <li>
         {{this.typeOfTrip}}
-    </li>
-    <li>
-        {{this.itinerary}}
     </li>
 </ul>
 {{/each}}

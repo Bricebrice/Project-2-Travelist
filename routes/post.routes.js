@@ -21,13 +21,47 @@ router.get('/explore/posts/create', isLoggedIn, (req,res) => { res.render('posts
 
 //POST route to submit and save form to create post
 router.post('/explore/posts/create', isLoggedIn, fileUploader.single('itinerary[0].day.images'), (req,res) => {
-    const {name, location, duration, distance, typeOfTrip, activities} = req.body;
+    const {title, location, duration, distance, typeOfTrip, itinerary} = req.body;
 
-    Post.create({name,location,duration,distance,typeOfTrip,activities, createdBy: req.session.currentUser})
+    Post.create({title,location,duration,distance,typeOfTrip,itinerary, createdBy: req.session.currentUser})
     .then(newPostFromDB => res.redirect('/explore/posts'))
 })
 
 //GET route for editing post
-router.get('/explore')
+router.get('/explore/posts/:postId/edit', isLoggedIn, (req,res,next) => {
+    const {postId} =req.params;
+    Post.findById(postId)
+    .then((postToEdit) => {
+        res.render('posts/post-edit')
+    })
+    .catch((err) => next(err))
+})
+
+//POST route for editing post
+router.post('/explore/posts/:postId/edit', isLoggedIn, (req,res,next) => {
+    const {postId} = req.params;
+    const {title, location, duration, distance, typeOfTrip, itinerary} = req.body;
+    Post.findByIdAndUpdate(postId, {title, location, duration, distance, typeOfTrip, itinerary}, {new:true})
+    .then((updatedPost)=>{
+        res.redirect('/explore/posts/:postId')
+    })
+    .catch((err)=> next(err))
+})
+
+//GET route for viewing specific post
+router.get('/explore/posts/:postId', (req,res) => {
+    const {postId} = req.params;
+    Post.findById(postId)
+    .then((postFromDB) =>{
+        res.render('posts/post-view', {post: postFromDB})
+    })
+})
+
+//POST route to delete post
+router.post('/explore/posts/:postId/delete', (req,res) => {
+    const {postId} =req.params;
+    Post.findByIdAndDelete(postId)
+    .then(()=>res.redirect('/'))
+})
 
 module.exports = router;
