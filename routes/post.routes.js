@@ -32,19 +32,20 @@ router.get('/explore/posts/:postId/edit', isLoggedIn, (req,res,next) => {
     const {postId} =req.params;
     Post.findById(postId)
     .then((postToEdit) => {
-        res.render('posts/post-edit')
+        res.render('posts/post-edit', {post: postToEdit})
     })
     .catch((err) => next(err))
 })
 
 //POST route for editing post
-router.post('/explore/posts/:postId/edit', isLoggedIn, (req,res,next) => {
+router.post('/explore/posts/:postId/edit', isLoggedIn, fileUploader.single('itinerary[0].day.images'), (req,res,next) => {
     const {postId} = req.params;
     const {title, location, duration, distance, typeOfTrip, itinerary} = req.body;
     Post.findByIdAndUpdate(postId, {title, location, duration, distance, typeOfTrip, itinerary}, {new:true})
     .then((updatedPost)=>{
         console.log('post updated', updatedPost)
-        res.redirect('/explore/posts')
+        post = updatedPost;
+        res.redirect(`/explore/posts/${updatedPost._id}`)
     })
     .catch((err)=> next(err))
 })
@@ -59,10 +60,10 @@ router.get('/explore/posts/:postId', (req,res) => {
 })
 
 //POST route to delete post
-router.post('/explore/posts/:postId/delete', (req,res) => {
+router.post('/explore/posts/:postId/delete', isLoggedIn, fileUploader.single('itinerary[0].day.images'), (req,res) => {
     const {postId} =req.params;
     Post.findByIdAndDelete(postId)
-    .then(()=>res.redirect('/'))
+    .then(()=>res.redirect('/explore/posts'))
 })
 
 module.exports = router;
