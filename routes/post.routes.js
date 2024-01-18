@@ -60,7 +60,7 @@ router.get('/explore/posts/:postId', (req,res) => {
 })
 
 //POST route to delete post
-router.post('/explore/posts/:postId/delete', isLoggedIn, fileUploader.single('itinerary[0].day.images'), (req,res) => {
+router.post('/explore/posts/:postId/delete', isLoggedIn, (req,res) => {
     const {postId} =req.params;
     Post.findByIdAndDelete(postId)
     .then(()=>res.redirect('/explore/posts'))

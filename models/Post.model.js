@@ -3,25 +3,20 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
   { title: String,
+    image: String,
     location: {
       type: String,
       required: true,
     },
+    description: String,
     duration: Number,
     distance: Number,
     typeOfTrip: {
       type: String,
       enum: ["Escape trip", "Spa trip", "Honeymoon", "Cultural Trip", "Road Trip"],
     },
-   itinerary: [
-      {
-        day: {
-          location: String,
-          description: String,
-          images: [String],
-        },
-      },
-    ],
+   itinerary: [{type: Schema.Types.ObjectId,
+      ref:"Day"}],
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: "User",

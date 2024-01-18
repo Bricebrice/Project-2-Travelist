@@ -22,7 +22,7 @@ router.post(
   "/userProfile/:userId/edit",
   fileUploader.single("profileImage"),
   (req, res, next) => {
-    const { firstName, lastName, username, email, password, existingImage } =
+    const { firstName, lastName, username, existingImage } =
       req.body;
     const { userId } = req.params;
 
@@ -34,7 +34,7 @@ router.post(
     }
     User.findByIdAndUpdate(
       userId,
-      { firstName, lastName, username, email, password, profileImage },
+      { firstName, lastName, username, profileImage },
       { new: true }
     ).then((updatedUser) => {
       req.session.currentUser = updatedUser;
@@ -47,14 +47,14 @@ router.post(
   }
 );
 
-//POST route to delete user
-router.post("/userProfile/:userId/delete", (req, res, next) => {
-    const {userId}=req.params;
-    req.session.destroy((err) => {
-      if (err) next(err);
-      // TO REMOVE - no aqui pero la idea es user.findbyIdandDelete y luego redirect
-      User.findByIdAndDelete(userId)
-      .then(()=> res.redirect("/"))
-    });
-});
+// //POST route to delete user
+// router.post("/userProfile/:userId/delete", (req, res, next) => {
+//     const {userId}=req.params;
+//     req.session.destroy((err) => {
+//       if (err) next(err);
+//       // TO REMOVE - no aqui pero la idea es user.findbyIdandDelete y luego redirect
+//       User.findByIdAndDelete(userId)
+//       .then(()=> res.redirect("/"))
+//     });
+// });
 module.exports = router;

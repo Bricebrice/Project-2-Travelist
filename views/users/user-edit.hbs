@@ -20,16 +20,6 @@
       <input type="text" name="username" placeholder="James Cookies"  value="{{userInSession.username}}" required/>
     </label>
 
-    <label>
-      Email
-      <input type="email" name="email" placeholder="james-cook@world.com"  value="{{userInSession.email}}" required/>
-    </label>
-
-    <label>
-      Password
-      <input type="password" name="password" placeholder="********" required/>
-    </label>
-
     <button type="submit">Save changes</button>
 
     {{#if errorMessage}}
