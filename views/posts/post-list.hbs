@@ -3,16 +3,16 @@
 {{#each post}}
 <ul>
     <li>
-        <h2> <a href="/explore/posts/{{_id}}">{{this.title}}</a></h2>
+        <h2> <a href="/explore/posts/{{_id}}">{{title}}</a></h2>
     </li>
     <li>
-        {{this.location}}
+        {{location}}
     </li>
     <li>
-        {{this.duration}} days
+        {{description}}
     </li>
     <li>
-        {{this.typeOfTrip}}
+        {{typeOfTrip}}
     </li>
 </ul>
 {{/each}}
@@ -21,4 +21,4 @@
 {{/if}}
 
 
-    <a href="/explore/posts/create" style=""> Create new post</a>
+<a href="/explore/posts/create">Create new post</a>
