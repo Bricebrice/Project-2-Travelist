@@ -20,11 +20,14 @@ router.get('/explore/posts', (req,res) => {
 router.get('/explore/posts/create', isLoggedIn, (req,res) => { res.render('posts/post-create')});
 
 //POST route to submit and save form to create post
-router.post('/explore/posts/create', isLoggedIn, fileUploader.single('itinerary[0].day.images'), (req,res) => {
-    const {title, location, duration, distance, typeOfTrip, itinerary} = req.body;
+router.post('/explore/posts/create', isLoggedIn, fileUploader.single('image'), (req,res) => {
+    const {title, image, location, description, duration, distance, typeOfTrip} = req.body;
 
-    Post.create({title,location,duration,distance,typeOfTrip,itinerary, createdBy: req.session.currentUser})
-    .then(newPostFromDB => res.redirect('/explore/posts'))
+    Post.create({title, image: req.file.path, location, description, duration, distance, typeOfTrip, createdBy: req.session.currentUser})
+    .then(newPostFromDB =>{
+        console.log('newly created post', newPostFromDB)
+        res.redirect('/explore/posts')
+    })
 })
 
 //GET route for editing post
@@ -38,10 +41,17 @@ router.get('/explore/posts/:postId/edit', isLoggedIn, (req,res,next) => {
 })
 
 //POST route for editing post
-router.post('/explore/posts/:postId/edit', isLoggedIn, fileUploader.single('itinerary[0].day.images'), (req,res,next) => {
+router.post('/explore/posts/:postId/edit', isLoggedIn, fileUploader.single('postImage'), (req,res,next) => {
     const {postId} = req.params;
-    const {title, location, duration, distance, typeOfTrip, itinerary} = req.body;
-    Post.findByIdAndUpdate(postId, {title, location, duration, distance, typeOfTrip, itinerary}, {new:true})
+    const {title, existingImage, location, description, duration, distance, typeOfTrip} = req.body;
+
+    let postImage;
+    if (req.file) {
+        postImage = req.file.path;
+    } else {
+        postImage = existingImage;
+    }
+    Post.findByIdAndUpdate(postId, {title, postImage, location, description, duration, distance, typeOfTrip}, {new:true})
     .then((updatedPost)=>{
         console.log('post updated', updatedPost)
         post = updatedPost;

@@ -12,10 +12,10 @@ const postSchema = new Schema(
     duration: Number,
     distance: Number,
     typeOfTrip: {
-      type: String,
+      type: [String],
       enum: ["Escape trip", "Spa trip", "Honeymoon", "Cultural Trip", "Road Trip"],
     },
-   itinerary: [{type: Schema.Types.ObjectId,
+    itinerary: [{type: Schema.Types.ObjectId,
       ref:"Day"}],
     createdBy: {
       type: Schema.Types.ObjectId,

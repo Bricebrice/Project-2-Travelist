@@ -1,20 +1,16 @@
-{{#each post}}
-    {{title}}
-    {{location}}
-    {{duration}}
-    {{distance}}
-    {{typeOfTrip}}
-    {{#each itinerary}}
-        {{#with day}}
-            {{location}}
-            {{description}}
-            {{images}}
-        {{/with}}
+
+    <h2>{{post.title}}</h2>
+    <img src="{{post.image}}"/>
+    <h5>{{post.location}}</h5>
+    <p>{{post.description}}</p>
+    <h5>{{post.duration}} days</h5>
+    <h5>{{post.distance}} kms</h5>
+    {{#each post.typeOfTrip}}
+        <li>{{this}}</li>
     {{/each}}
+    <h4>Itinerary</h4>
 
-
-{{/each}}
-
+<button><a href="/explore/posts/{{post._id}}/day/create">Add days to your itinerary</a></button>
 <button><a href="/explore/posts/{{post._id}}/edit">Edit post</a></button>
 
 
