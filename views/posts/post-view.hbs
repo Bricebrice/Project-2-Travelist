@@ -8,7 +8,10 @@
   <li>{{this}}</li>
 {{/each}}
 <h4>Itinerary</h4>
-
-<button><a href="/explore/posts/{{post._id}}/day/create">Add days to your
-    itinerary</a></button>
+{{#each post.itinerary}}
+  <p>{{this.title}}</p>
+  <p>{{this.location}}</p>
+  <p>{{this.description}}</p>
+  <button><a href="/explore/posts/{{post._id}}/edit">Edit Day</a></button>
+{{/each}}
 <button><a href="/explore/posts/{{post._id}}/edit">Edit post</a></button>

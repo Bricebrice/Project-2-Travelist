@@ -5,6 +5,7 @@ const router = express.Router();
 
 const Post = require("../models/Post.model");
 const Country = require("../models/Country.model");
+const Day = require("../models/Day.model")
 
 const fileUploader = require("../config/cloudinary.config");
 
@@ -44,7 +45,10 @@ router.post(
       duration,
       distance,
       typeOfTrip,
-    } = req.body;
+      dayTitle,
+      dayLocation,
+      dayDescription,
+      } = req.body;
 
     Post.create({
       title,
@@ -57,7 +61,15 @@ router.post(
       createdBy: req.session.currentUser,
     }).then((newPostFromDB) => {
       console.log("newly created post", newPostFromDB);
-      res.redirect("/explore/posts");
+      console.log(dayTitle,dayLocation, dayDescription)
+      Day.create({title: dayTitle, location: dayLocation, description: dayDescription})
+      .then((dayCreated)=>{
+        const postId = newPostFromDB._id;
+        Post.findByIdAndUpdate(postId, {$push: {itinerary: dayCreated._id}}, {new: true})
+        .then(()=> {
+          res.redirect("/explore/posts");
+        })
+      })
     });
   }
 );
@@ -121,7 +133,10 @@ router.post(
 //GET route for viewing specific post
 router.get("/explore/posts/:postId", (req, res) => {
   const { postId } = req.params;
-  Post.findById(postId).then((postFromDB) => {
+  Post.findById(postId)
+  .populate("itinerary")
+  .then((postFromDB) => {
+    console.log('post from db', postFromDB)
     res.render("posts/post-view", { post: postFromDB });
   });
 });
