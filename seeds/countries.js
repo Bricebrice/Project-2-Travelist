@@ -2,8 +2,11 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const Country = require("../models/Country.model");
 
+require("dotenv").config();
+
 const MONGO_URI =
   process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/travelist";
+// console.log("mongodb_uri ", MONGO_URI);
 
 mongoose
   .connect(MONGO_URI)

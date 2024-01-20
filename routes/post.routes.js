@@ -12,7 +12,10 @@ const fileUploader = require("../config/cloudinary.config");
 router.get("/explore/posts", (req, res) => {
   Post.find()
     .then((postsFromDB) => {
-      res.render("posts/post-list", { post: postsFromDB });
+      res.render("posts/post-list", {
+        post: postsFromDB,
+        userInSession: req.session.currentUser,
+      });
     })
     .catch((err) => console.log(err));
 });
