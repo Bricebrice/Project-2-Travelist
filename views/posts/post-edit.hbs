@@ -9,9 +9,15 @@
         <input type="file" name="postImage" class="form-control-file" />
         <input type="text" name="existingImage" hidden value="{{post.image}}">
     <label>
-
-    <label> Location:</label>
-    <input type="text" name="location" placeholder="Add location" value="{{post.location}}">
+    
+    <label for="location">Location:
+        <select id="location" name="location" placeholder="Add location">
+            <option value="{{post.location}}">{{post.location}}</option>
+            {{#each countries}}
+                <option value="{{name}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </label>
 
     <label for="description">Description:</label>
     <textarea name="description" rows="10" cols="45">{{post.description}}</textarea>

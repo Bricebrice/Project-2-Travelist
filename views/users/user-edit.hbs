@@ -3,6 +3,7 @@
   <h2>Edit Profile</h2>
   <form action="/userProfile/{{userInSession._id}}/edit" method="POST" enctype="multipart/form-data">
    <label>Image:
+          <img src="{{userInSession.profileImage}}" />
           <input type="file" name="profileImage" class="form-control-file" />
           <input type="text" name="existingImage" hidden value="{{userInSession.profileImage}}">
     <label>

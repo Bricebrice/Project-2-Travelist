@@ -18,7 +18,7 @@ module.exports = (app) => {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
         // maxAge: 60000, // 60 * 1000 ms === 1 min
-        maxAge: 600000, // 60 * 10000 ms === 10 mins FOR TESTING
+        maxAge: 12 * 60 * 60 * 1000, // 12*60*60*1000 ms === 12h FOR TESTING
       },
       store: MongoStore.create({
         mongoUrl:
