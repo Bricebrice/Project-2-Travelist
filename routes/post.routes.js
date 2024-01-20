@@ -25,7 +25,7 @@ router.get("/explore/posts", (req, res) => {
 router.get("/explore/posts/create", isLoggedIn, (req, res) => {
   Country.find()
     .then((countriesFromDB) => {
-      console.log("countriesFromDB are: ", countriesFromDB);
+      // console.log("countriesFromDB are: ", countriesFromDB);
       res.render("posts/post-create", { countries: countriesFromDB });
     })
     .catch((err) => console.log(err));
@@ -74,17 +74,19 @@ router.post(
   }
 );
 
-//GET route for editing post
+// GET route for editing post
 router.get("/explore/posts/:postId/edit", isLoggedIn, (req, res, next) => {
   const { postId } = req.params;
   Post.findById(postId)
     .then((postToEdit) => {
-      res.render("posts/post-edit", { post: postToEdit });
+      Country.find().then((countries) => {
+        res.render("posts/post-edit", { post: postToEdit, countries });
+      });
     })
     .catch((err) => next(err));
 });
 
-//POST route for editing post
+// POST route for editing post
 router.post(
   "/explore/posts/:postId/edit",
   isLoggedIn,
