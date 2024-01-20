@@ -12,6 +12,8 @@
   <p>{{this.title}}</p>
   <p>{{this.location}}</p>
   <p>{{this.description}}</p>
-  <button><a href="/explore/posts/{{post._id}}/edit">Edit Day</a></button>
+  <img src="{{this.image}}" />
+  <button><a href="/explore/posts/{{../post._id}}/itinerary/{{this._id}}/edit">Edit
+      Day</a></button>
 {{/each}}
 <button><a href="/explore/posts/{{post._id}}/edit">Edit post</a></button>

@@ -43,6 +43,10 @@ app.use("/", userRouter);
 const postRouter = require("./routes/post.routes");
 app.use("/", postRouter);
 
+//dayRouter
+const dayRouter = require("./routes/day.routes");
+app.use("/", dayRouter);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
