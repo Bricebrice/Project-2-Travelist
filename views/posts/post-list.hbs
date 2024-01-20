@@ -1,24 +1,22 @@
-
 {{#if post.length}}
-{{#each post}}
-<ul>
-    <li>
+  {{#each post}}
+    <ul>
+      <li>
         <h2> <a href="/explore/posts/{{_id}}">{{title}}</a></h2>
-    </li>
-    <li>
+      </li>
+      <li>
         {{location}}
-    </li>
-    <li>
+      </li>
+      <li>
         {{description}}
-    </li>
-    <li>
+      </li>
+      <li>
         {{typeOfTrip}}
-    </li>
-</ul>
-{{/each}}
+      </li>
+    </ul>
+  {{/each}}
 
 {{else}}
 {{/if}}
-
 
 <a href="/explore/posts/create">Create new post</a>

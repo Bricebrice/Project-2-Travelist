@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const daySchema = new Schema(
   {
-    title:String,
-    location:String,
+    title: String,
+    location: String,
     description: String,
-    image:String,
+    image: String,
   },
   {
     timestamp: true,

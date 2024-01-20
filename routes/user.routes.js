@@ -22,8 +22,7 @@ router.post(
   "/userProfile/:userId/edit",
   fileUploader.single("profileImage"),
   (req, res, next) => {
-    const { firstName, lastName, username, existingImage } =
-      req.body;
+    const { firstName, lastName, username, existingImage } = req.body;
     const { userId } = req.params;
 
     let profileImage;
