@@ -7,14 +7,20 @@
 >
 
   <label>Title:</label>
+
   <input type="text" name="title" placeholder="Add travel title" />
 
-  <label> Location:</label>
+  <label for="image">Image:</label>
+  <input type="file" name="image" placeholder="Add an image" />
+
   <select id="location" name="location" placeholder="Add location">
     {{#each countries}}
       <option value="{{name}}">{{name}}</option>
     {{/each}}
   </select>
+
+  <label for="description">Description:</label>
+  <textarea name="description" rows="10" cols="45"></textarea>
 
   <label> Duration:</label>
   <input type="number" name="duration" placeholder="Add duration in days" />
@@ -30,22 +36,6 @@
     <option>Cultural Trip</option>
     <option>Road Trip</option>
   </select>
-
-  <label>Itinerary:</label>
-  <input
-    type="text"
-    name="itinerary[0].day.location"
-    placeholder="Add location"
-  />
-  <textarea cols="30" rows="15" placeholder="Add description"></textarea>
-  <input
-    type="file"
-    name="itinerary[0].day.images"
-    placeholder="Add image"
-    multiple
-  />
-  <button>Add more images</button>
-  <button>Add day in your itinerary</button>
 
   <button type="submit">Create post</button>
 

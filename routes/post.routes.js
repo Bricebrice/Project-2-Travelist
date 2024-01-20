@@ -31,20 +31,31 @@ router.get("/explore/posts/create", isLoggedIn, (req, res) => {
 router.post(
   "/explore/posts/create",
   isLoggedIn,
-  fileUploader.single("itinerary[0].day.images"),
+  fileUploader.single("image"),
   (req, res) => {
-    const { title, location, duration, distance, typeOfTrip, itinerary } =
-      req.body;
-
-    Post.create({
+    const {
       title,
+      image,
       location,
+      description,
       duration,
       distance,
       typeOfTrip,
-      itinerary,
+    } = req.body;
+
+    Post.create({
+      title,
+      image: req.file.path,
+      location,
+      description,
+      duration,
+      distance,
+      typeOfTrip,
       createdBy: req.session.currentUser,
-    }).then((newPostFromDB) => res.redirect("/explore/posts"));
+    }).then((newPostFromDB) => {
+      console.log("newly created post", newPostFromDB);
+      res.redirect("/explore/posts");
+    });
   }
 );
 
@@ -62,16 +73,39 @@ router.get("/explore/posts/:postId/edit", isLoggedIn, (req, res, next) => {
 router.post(
   "/explore/posts/:postId/edit",
   isLoggedIn,
-  fileUploader.single("itinerary[0].day.images"),
+  fileUploader.single("postImage"),
   (req, res, next) => {
     const { postId } = req.params;
-    const { title, location, duration, distance, typeOfTrip, itinerary } =
-      req.body;
+    const {
+      title,
+      existingImage,
+      location,
+      description,
+      duration,
+      distance,
+      typeOfTrip,
+    } = req.body;
+
+    let postImage;
+    if (req.file) {
+      postImage = req.file.path;
+    } else {
+      postImage = existingImage;
+    }
     Post.findByIdAndUpdate(
       postId,
-      { title, location, duration, distance, typeOfTrip, itinerary },
+      {
+        title,
+        postImage,
+        location,
+        description,
+        duration,
+        distance,
+        typeOfTrip,
+      },
       { new: true }
     )
+
       .then((updatedPost) => {
         console.log("post updated", updatedPost);
         post = updatedPost;

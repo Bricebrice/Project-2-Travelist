@@ -1,69 +1,37 @@
 <h3>Edit your post</h3>
 
-<form
-  action="/explore/posts/{{post._id}}/edit"
-  method="POST"
-  enctype="multipart/form-data"
->
+<form action="/explore/posts/{{post._id}}/edit" method="POST" enctype="multipart/form-data">
+    
+    <label>Title:</label>
+    <input type="text" name="title" placeholder="{{post.title}}" value="{{post.title}}">
+ 
+    <label>Image:
+        <input type="file" name="postImage" class="form-control-file" />
+        <input type="text" name="existingImage" hidden value="{{post.image}}">
+    <label>
 
-  <label>Title:</label>
-  <input
-    type="text"
-    name="title"
-    placeholder="{{post.title}}"
-    value="{{post.title}}"
-  />
+    <label> Location:</label>
+    <input type="text" name="location" placeholder="Add location" value="{{post.location}}">
 
-  <label> Location:</label>
-  <input
-    type="text"
-    name="location"
-    placeholder="Add location"
-    value="{{post.location}}"
-  />
-
-  <label> Duration:</label>
-  <input
-    type="text"
-    name="duration"
-    placeholder="Add duration in days"
-    value="{{post.duration}}"
-  />
-
-  <label>Distance:</label>
-  <input
-    type="text"
-    name="distance"
-    placeholder="Add distance in km"
-    value="{{post.distance}}"
-  />
-
-  <label> Type of Trip: </label>
-  <select name="typeOfTrip" multiple>
-    <option>Escape trip</option>
-    <option>Spa trip</option>
-    <option>Honeymoon</option>
-    <option>Cultural Trip</option>
-    <option>Road Trip</option>
-  </select>
-
-  <label>Itinerary:</label>
-  <input
-    type="text"
-    name="itinerary[0].day.location"
-    placeholder="Add location"
-  />
-  <textarea cols="30" rows="15" placeholder="Add description"></textarea>
-  <input
-    type="file"
-    name="itinerary[0].day.images"
-    placeholder="Add image"
-    multiple
-  />
-  <button>Add more images</button>
-  <button>Add day in your itinerary</button>
-
-  <button type="submit">Update Post</button>
+    <label for="description">Description:</label>
+    <textarea name="description" rows="10" cols="45">{{post.description}}</textarea>
+   
+    <label> Duration:</label>
+    <input type="text" name="duration" placeholder="Add duration in days" value="{{post.duration}}"> 
+ 
+    <label>Distance:</label>
+    <input type="text" name="distance" placeholder="Add distance in km" value="{{post.distance}}">
+ 
+    <label> Type of Trip: </label>
+    <select name="typeOfTrip" multiple>
+        <option>Escape trip</option>
+        <option>Spa trip</option>
+        <option>Honeymoon</option>
+        <option>Cultural Trip</option> 
+        <option>Road Trip</option>
+    </select>
+  
+<button type="submit">Update Post</button>
 </form>
 <form action="/explore/posts/{{post._id}}/delete" method="POST">
   <button type="submit">Delete Post</button>
