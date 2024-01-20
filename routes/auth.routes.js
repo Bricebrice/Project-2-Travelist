@@ -85,7 +85,7 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
 router.post("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy((err) => {
     if (err) next(err);
-    // TO REMOVE - no aqui pero la idea es user.findbyIdandDelete y luego redirect
+
     res.redirect("/");
   });
 });
