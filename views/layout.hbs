@@ -1,43 +1,107 @@
 <html lang="en">
-
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{appTitle}}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
-
   <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Travelist</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/explore/posts">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutus">About us</a>
+            </li>
+          </ul>
 
-    <nav>
-      <ul>
-        <li id="to-left">
-          <a href="/"> Travelist </a>
-          <span>|</span>
-          <a href="/explore/posts">Explore</a>
-        </li>
-        <li id="to-right">
+          <form class="d-flex mx-auto mb-0">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-outline-success"
+              type="submit"
+            >Search</button>
+          </form>
 
-          {{#if userInSession}}
-            <a href="/userProfile">My Profile</a>
-            <span> | </span>
-            <form id="logout-form" action="/logout" method="POST">
-              <button>Logout</button>
-            </form>
-          {{else}}
-            <a href="/signup">Signup</a>
-            <span> | </span>
-            <a href="/login">Login</a>
-          {{/if}}
-
-        </li>
-      </ul>
+          <div class="d-flex">
+            {{#if userInSession}}
+              <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/userProfile">My profile</a>
+                </li>
+                <form
+                  class="nav-item"
+                  id="logout-form"
+                  action="/logout"
+                  method="POST"
+                >
+                  <button class="nav-link">Logout</button>
+                </form>
+              </ul>
+            {{else}}
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="btn btn-primary me-2" href="/signup">Sign up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-outline-primary me-2" href="/login">Log in</a>
+                </li>
+              </ul>
+            {{/if}}
+          </div>
+        </div>
+      </div>
     </nav>
 
     {{{body}}}
 
-    <script src="/js/script.js"></script>
-  </body>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Brice & Omayma</p>
+        <p>Made with love </p>
+      </div>
+    </footer>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
