@@ -1,21 +1,28 @@
-<div id="form">
-  <h2>Login</h2>
+<div class="main">
+  <section class="login">
+    <div class="container-login">
+      <div id="form" class="content-login">
+        <h2 class="form-title">Login</h2>
 
-  <form action="/login" method="POST">
+        <form action="/login" method="POST" class="login-form">
 
-    <label>
-      Email
-      <input type="email" name="email" placeholder="rockstar@ironhack.com" />
-    </label>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email" class="form-input"/>
+          </div>
 
-    <label>Password
-      <input type="password" name="password" placeholder="********" />
-    </label>
+          <div class="form-group">
+            <input type="password" name="password" placeholder="Password" class="form-input"/>
+          </div>
 
-    <button type="submit">Login</button>
+          <div>
+            <button type="submit" class="form-submit">Log in</button>
+          </div>
 
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
+          {{#if errorMessage}}
+            <p class="error">{{errorMessage}}</p>
+          {{/if}}
+        </form>
+      </div>
+    </div>
+  </section>
 </div>

@@ -1,38 +1,43 @@
 {{! views/auth/signup.hbs }}
 
-<div id="form">
-  <h2>Signup</h2>
-  <form action="/signup" method="POST">
-
-    <label>
-      First name
-      <input type="text" name="firstName" placeholder="James" />
-    </label>
-
-    <label>
-      Last name
-      <input type="text" name="lastName" placeholder="Cook" />
-    </label>
-
-    <label>
-      Username
-      <input type="text" name="username" placeholder="James Cookies" />
-    </label>
-
-    <label>
-      Email
-      <input type="email" name="email" placeholder="james-cook@world.com" />
-    </label>
-
-    <label>
-      Password
-      <input type="password" name="password" placeholder="********" />
-    </label>
-
-    <button type="submit">Create account</button>
-
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
+<div class="main">
+  <section class="signup">
+    <div class="container-signup">
+      <div class="content-signup">
+        
+        <form action="/signup" method="POST" id="signup-form" class="signup-form"></form>
+          <h2 class="form-title">Create Account</h2>
+          <div class="form-group">
+              {{!-- <label for="firstName">First name </label> --}}
+            <input type="text" name="firstName" placeholder="First Name" class="form-input"/>   
+          </div>
+          <div class="form-group">
+              {{!-- <label for="lastName">Last name</label> --}}
+            <input type="text" name="lastName" placeholder="Last Name" class="form-input"/>
+          </div>
+          <div class="form-group">
+              {{!-- <label for="username">Username</label> --}}
+            <input type="text" name="username" placeholder="Username" class="form-input"/>
+          </div>
+          <div class="form-group">
+            {{!-- <label for="email">Email</label> --}}
+            <input type="email" name="email" placeholder="Email" class="form-input"/> 
+          </div>
+          <div class="form-group">
+             {{!-- <label for="password">Password</label> --}}
+          <input type="password" name="password" placeholder="Password" class="form-input"/>
+          </div>
+          <div>
+            <button type="submit" class="form-submit">Sign up</button>
+          </div>
+          {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+          {{/if}}
+        </form>
+        <p class="loginhere">
+          Have already an account ? <a href="/login" class="loginhere-link">Login here</a>
+        </p>
+      </div>
+    </div>
+  </section>
 </div>
