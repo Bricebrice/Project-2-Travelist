@@ -166,3 +166,41 @@ footer p {
 .box-shadow {
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
+
+.signin-container{
+  padding: 25px;
+  background-image: url("../images/roadtrip.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.form-signin {
+  max-width: 600px;
+  border-radius: 5%;
+  padding: 10% 10%;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  background-color: antiquewhite;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.login-container{
+  padding: 135px;
+  background-image: url("../images/roadtrip.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.form-login {
+  max-width: 600px;
+  border-radius: 5%;
+  padding: 10% 10%;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  background-color: antiquewhite;
+}
