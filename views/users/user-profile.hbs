@@ -3,9 +3,6 @@
   <img src="{{userInSession.profileImage}}" />
   <p>This is your profile page {{userInSession.username}}!</p>
   <button>
-    <a href="/userProfile">Reload the page</a>
-  </button>
-  <button>
     <a href="/userProfile/{{userInSession._id}}/edit">Edit Profile</a>
   </button>
 {{else}}
