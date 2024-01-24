@@ -168,15 +168,16 @@ footer p {
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
 
+/* login and signup styling */
 .signin-container{
-  padding: 25px;
+  padding: 3% 1.5%;
   background-image: url("../images/roadtrip.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-.form-signin {
-  max-width: 600px;
+.form-signin, .form-login {
+  max-width: 45vw;
   border-radius: 5%;
   padding: 10% 10%;
   justify-content: center;
@@ -190,18 +191,12 @@ footer p {
 }
 
 .login-container{
-  padding: 135px;
+  padding: 10% 5%;
   background-image: url("../images/roadtrip.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-.form-login {
-  max-width: 600px;
-  border-radius: 5%;
-  padding: 10% 10%;
-  justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  background-color: antiquewhite;
-}
+
+
+

@@ -1,4 +1,4 @@
-
+{{!-- 
 <div id="form">
   <h2>Edit Profile</h2>
   <form action="/userProfile/{{userInSession._id}}/edit" method="POST" enctype="multipart/form-data">
@@ -30,4 +30,49 @@
   <form action="/userProfile/{{userInSession._id}}/delete" method="POST">
   <button type="submit"> Delete account</button>
   </form>
+</div> --}}
+
+
+<div class="container bootstrap snippets bootdey">
+    <h1 class="text-primary">Edit Profile</h1>
+      <hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="{{userInSession.profileImage}}" class="avatar img-circle img-thumbnail rounded-circle" height="250" alt="avatar">
+          <h6>Upload a different photo...</h6>
+          <input type="file" name="profileImage" class="form-control" />
+          <input type="text" name="existingImage" hidden value="{{userInSession.profileImage}}">
+        </div>
+      </div>
+      
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        <h3>Personal info</h3>
+        
+        <form action="/userProfile/{{userInSession._id}}/edit" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="firstName" placeholder="James" value="{{userInSession.firstName}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="lastName" placeholder="Cook"  value="{{userInSession.lastName}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Username:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="username" placeholder="James Cookies"  value="{{userInSession.username}}" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-outline-primary">Save changes</button>
+        </form>
+      </div>
+  </div>
 </div>
+<hr>
