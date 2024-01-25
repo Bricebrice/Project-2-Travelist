@@ -1,35 +1,34 @@
-<form
-  action="/explore/posts/{{post._id}}/itinerary/{{day._id}}/edit"
-  method="POST"
-  enctype="multipart/form-data"
->
+<div class="create-form-body">
+<div class="custom-container mt-5">
+  <h3>Edit Day Itinerary</h3>
 
-  <label for="title">Title:</label>
-  <input
-    type="text"
-    name="title"
-    placeholder="Add title"
-    value="{{day.title}}"
-  />
+  <form action="/explore/posts/{{post._id}}/itinerary/{{day._id}}/edit" method="POST" enctype="multipart/form-data">
 
-  <label for="location"> Location:</label>
-  <input
-    type="text"
-    name="location"
-    placeholder="Add location"
-    value="{{day.location}}"
-  />
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" name="title" placeholder="Add title" value="{{day.title}}">
+    </div>
 
-  <label for="description">Description:</label>
-  <textarea
-    name="description"
-    rows="10"
-    cols="45"
-  >{{day.description}}</textarea>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" class="form-control" name="location" placeholder="Add location" value="{{day.location}}">
+    </div>
 
-  <label for="image">Image:</label>
-  <input type="file" name="dayImage" class="form-control-file" />
-  <input type="text" name="existingImage" hidden value="{{day.image}}" />
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea class="form-control" name="description" rows="10" cols="45">{{day.description}}</textarea>
+    </div>
 
-  <button>Submit</button>
-</form>
+    <div class="form-group">
+      <label for="image">Image:</label>
+        <div class="thumbnail-container mx-auto">
+          <img id="imagePreview" class="thumbnail" src="{{day.image}}" alt="Post Image Preview">
+        </div>
+      <input type="file" class="form-control-file" name="dayImage" />
+      <input type="text" name="existingImage" hidden value="{{day.image}}" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</div>
