@@ -4,22 +4,25 @@
 
         <form action="/explore/posts/{{post._id}}/edit" method="POST" enctype="multipart/form-data">
     
-            <div class="form-group">
-                <label>Title:</label>
+            <div class="mb-3">
+                <label class="form-label">Title:</label>
                 <input type="text" name="title" class="form-control" placeholder="{{post.title}}" value="{{post.title}}">
             </div>
  
-            <div class="form-group">
-                <label>Image:</label>
-                    <div class="thumbnail-container mx-auto">
-                        <img id="imagePreview" class="thumbnail" src="{{post.image}}" alt="Post Image Preview">
+            <div class="mb-3">
+                <label class="form-label">Image:</label>
+                    <div class=" mx-auto">
+                        <img id="imagePreview" class="thumbnail rounded" src="{{post.image}}" alt="Post Image Preview">
                     </div>
-                <input type="file" name="postImage" class="form-control-file" />
+                <div class="mb-3">
+                    <label for="formFile" class="form-label"></label>
+                    <input class="form-control " type="file" id="formFile" name="postImage">
+                </div>
                 <input type="text" name="existingImage" hidden value="{{post.image}}">
             </div>
     
-            <div class="form-group">
-                <label for="location">Location:</label>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location:</label>
                 <select id="location" name="location" class="form-control">
                     <option value="{{post.location}}">{{post.location}}</option>
                     {{#each countries}}
@@ -28,23 +31,23 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="description">Description:</label>
+            <div class="mb-3">
+                <label for="description"class="form-label">Description:</label>
                 <textarea name="description" class="form-control" rows="10" cols="45">{{post.description}}</textarea>
             </div>
    
-            <div class="form-group">
-                <label>Duration:</label>
+            <div class="mb-3">
+                <label class="form-label">Duration:</label>
                 <input type="text" name="duration" class="form-control" placeholder="Add duration in days" value="{{post.duration}}">
             </div>
  
-            <div class="form-group">
-                <label>Distance:</label>
+            <div class="mb-3">
+                <label class="form-label">Distance:</label>
                 <input type="text" name="distance" class="form-control" placeholder="Add distance in km" value="{{post.distance}}">
             </div>
  
-            <div class="form-group">
-                <label>Type of Trip:</label>
+            <div class="mb-3">
+                <label class="form-label">Type of Trip:</label>
                 <select name="typeOfTrip" class="form-control" multiple>
                     <option>Escape trip</option>
                     <option>Spa trip</option>

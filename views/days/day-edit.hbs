@@ -4,27 +4,30 @@
 
   <form action="/explore/posts/{{post._id}}/itinerary/{{day._id}}/edit" method="POST" enctype="multipart/form-data">
 
-    <div class="form-group">
-      <label for="title">Title:</label>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
       <input type="text" class="form-control" name="title" placeholder="Add title" value="{{day.title}}">
     </div>
 
-    <div class="form-group">
-      <label for="location">Location:</label>
+    <div class="mb-3">
+      <label for="location"class="form-label">Location:</label>
       <input type="text" class="form-control" name="location" placeholder="Add location" value="{{day.location}}">
     </div>
 
-    <div class="form-group">
-      <label for="description">Description:</label>
+    <div class="mb-3">
+      <label for="description"class="form-label">Description:</label>
       <textarea class="form-control" name="description" rows="10" cols="45">{{day.description}}</textarea>
     </div>
 
-    <div class="form-group">
-      <label for="image">Image:</label>
-        <div class="thumbnail-container mx-auto">
+    <div class="mb-3">
+      <label for="image"class="form-label">Image:</label>
+        <div class="thumbnail-container">          
           <img id="imagePreview" class="thumbnail" src="{{day.image}}" alt="Post Image Preview">
         </div>
-      <input type="file" class="form-control-file" name="dayImage" />
+        <div class="mb-3">
+          <label for="formFile" class="form-label"></label>
+          <input class="form-control " type="file" id="formFile" name="dayImage">
+        </div>
       <input type="text" name="existingImage" hidden value="{{day.image}}" />
     </div>
 

@@ -5,18 +5,18 @@
 
     <form action="/explore/posts/create" method="post" enctype="multipart/form-data">
 
-      <div class="form-group">
-        <label for="title">Title:</label>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
         <input type="text" class="form-control" name="title" placeholder="Add travel title">
       </div>
 
-      <div class="form-group">
-        <label for="image">Image:</label>
+      <div class="mb-3">
+        <label for="image" class="form-label">Image:</label>
         <input type="file" class="form-control" name="image" placeholder="Add an image">
       </div>
 
-      <div class="form-group">
-        <label for="location">Location:</label>
+      <div class="mb-3">
+        <label for="location"class="form-label">Location:</label>
         <select class="form-control" id="location" name="location">
           {{#each countries}}
             <option value="{{name}}">{{name}}</option>
@@ -24,25 +24,25 @@
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="description">Description:</label>
+      <div class="mb-3">
+        <label for="description"class="form-label">Description:</label>
         <textarea class="form-control" name="description" rows="5"></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="duration">Duration:</label>
+      <div class="mb-3">
+        <label for="duration"class="form-label">Duration:</label>
         <input type="number" class="form-control" name="duration" placeholder="Add duration in days">
       </div>
 
-      <div class="form-group">
-        <label for="distance">Distance:</label>
+      <div class="mb-3">
+        <label for="distance"class="form-label">Distance:</label>
         <input type="number" class="form-control" name="distance" placeholder="Add distance in km">
       </div>
 
-      <div class="form-group">
-        <label for="typeOfTrip">Type of Trip:</label>
-        <select class="form-control" name="typeOfTrip" multiple>
-          <option>Escape trip</option>
+      <div class="mb-3">
+        <label for="typeOfTrip"class="form-label">Type of Trip:</label>
+        <select class="form-select" name="typeOfTrip" multiple >
+          <option >Escape trip</option>
           <option>Spa trip</option>
           <option>Honeymoon</option>
           <option>Cultural Trip</option>
@@ -53,18 +53,18 @@
       <div id="dayContainer">
         <h2>Itinerary</h2>
 
-        <div class="form-group">
-          <label for="dayTitle">Title:</label>
+        <div class="mb-3">
+          <label for="dayTitle"class="form-label">Title:</label>
           <input type="text" class="form-control" name="dayTitle" placeholder="Add title">
         </div>
 
-        <div class="form-group">
-          <label for="dayLocation">Location:</label>
+        <div class="mb-3">
+          <label for="dayLocation"class="form-label">Location:</label>
           <input type="text" class="form-control" name="dayLocation" placeholder="Add location">
         </div>
 
-        <div class="form-group">
-          <label for="dayDescription">Description:</label>
+        <div class="mb-3">
+          <label for="dayDescription"class="form-label">Description:</label>
           <textarea class="form-control" name="dayDescription" rows="5"></textarea>
         </div>
       </div>

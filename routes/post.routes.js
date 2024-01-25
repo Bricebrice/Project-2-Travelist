@@ -26,7 +26,7 @@ router.get("/explore/posts/create", isLoggedIn, (req, res) => {
   Country.find()
     .then((countriesFromDB) => {
       // console.log("countriesFromDB are: ", countriesFromDB);
-      res.render("posts/post-create", { countries: countriesFromDB });
+      res.render("posts/post-create", { countries: countriesFromDB , userInSession: req.session.currentUser});
     })
     .catch((err) => console.log(err));
 });
@@ -86,7 +86,7 @@ router.get("/explore/posts/:postId/edit", isLoggedIn, (req, res, next) => {
   Post.findById(postId)
     .then((postToEdit) => {
       Country.find().then((countries) => {
-        res.render("posts/post-edit", { post: postToEdit, countries });
+        res.render("posts/post-edit", { post: postToEdit, countries, userInSession: req.session.currentUser});
       });
     })
     .catch((err) => next(err));
@@ -147,7 +147,7 @@ router.get("/explore/posts/:postId", (req, res) => {
     .populate("itinerary")
     .then((postFromDB) => {
       console.log("post from db", postFromDB);
-      res.render("posts/post-view", { post: postFromDB });
+      res.render("posts/post-view", { post: postFromDB, userInSession: req.session.currentUser });
     });
 });
 

@@ -20,7 +20,7 @@ router.get(
       .then((postToEdit) => {
         Day.findById(dayId).then((day) => {
           console.log(postToEdit, day);
-          res.render("days/day-edit", { post: postToEdit, day });
+          res.render("days/day-edit", { post: postToEdit, day, userInSession:req.session.currentUser })
         });
       })
       .catch((err) => next(err));
