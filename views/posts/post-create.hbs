@@ -1,57 +1,93 @@
-<h3>Create a new post</h3>
 
-<form
-  action="/explore/posts/create"
-  method="post"
-  enctype="multipart/form-data"
->
+<div  class="create-form-body">
+  <div class="custom-container mt-5">
+    <h3>Create a new post</h3>
 
-  <label>Title:</label>
+    <form action="/explore/posts/create" method="post" enctype="multipart/form-data">
 
-  <input type="text" name="title" placeholder="Add travel title" />
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" name="title" placeholder="Add travel title">
+      </div>
 
-  <label for="image">Image:</label>
-  <input type="file" name="image" placeholder="Add an image" />
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="file" class="form-control" name="image" placeholder="Add an image">
+      </div>
 
-  <select id="location" name="location" placeholder="Add location">
-    {{#each countries}}
-      <option value="{{name}}">{{name}}</option>
-    {{/each}}
-  </select>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <select class="form-control" id="location" name="location">
+          {{#each countries}}
+            <option value="{{name}}">{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
 
-  <label for="description">Description:</label>
-  <textarea name="description" rows="10" cols="45"></textarea>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" name="description" rows="5"></textarea>
+      </div>
 
-  <label> Duration:</label>
-  <input type="number" name="duration" placeholder="Add duration in days" />
+      <div class="form-group">
+        <label for="duration">Duration:</label>
+        <input type="number" class="form-control" name="duration" placeholder="Add duration in days">
+      </div>
 
-  <label>Distance:</label>
-  <input type="number" name="distance" placeholder="Add distance in km" />
+      <div class="form-group">
+        <label for="distance">Distance:</label>
+        <input type="number" class="form-control" name="distance" placeholder="Add distance in km">
+      </div>
 
-  <label> Type of Trip: </label>
-  <select name="typeOfTrip" multiple>
-    <option>Escape trip</option>
-    <option>Spa trip</option>
-    <option>Honeymoon</option>
-    <option>Cultural Trip</option>
-    <option>Road Trip</option>
-  </select>
+      <div class="form-group">
+        <label for="typeOfTrip">Type of Trip:</label>
+        <select class="form-control" name="typeOfTrip" multiple>
+          <option>Escape trip</option>
+          <option>Spa trip</option>
+          <option>Honeymoon</option>
+          <option>Cultural Trip</option>
+          <option>Road Trip</option>
+        </select>
+      </div>
 
-  <h2>Itinerary</h2>
-  <label for="title">Title:</label>
-  <input type="text" name="dayTitle" placeholder="Add title" />
+      <div id="dayContainer">
+        <h2>Itinerary</h2>
 
-  <label for="location"> Location:</label>
-  <input type="text" name="dayLocation" placeholder="Add location" />
+        <div class="form-group">
+          <label for="dayTitle">Title:</label>
+          <input type="text" class="form-control" name="dayTitle" placeholder="Add title">
+        </div>
 
-  <label for="description">Description:</label>
-  <textarea name="dayDescription" rows="10" cols="45"></textarea>
+        <div class="form-group">
+          <label for="dayLocation">Location:</label>
+          <input type="text" class="form-control" name="dayLocation" placeholder="Add location">
+        </div>
 
-  {{!-- <label for="image">Image:</label>
-  <input type="file" name="dayImage" placeholder="Add an image" /> --}}
+        <div class="form-group">
+          <label for="dayDescription">Description:</label>
+          <textarea class="form-control" name="dayDescription" rows="5"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Create post</button>
 
-  <button type="submit">Create post</button>
+    </form>
+  </div>
+</div>
 
-</form>
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+  var select = document.getElementById('location');
+  var options = Array.from(select.options);
+
+  options.sort(function (a, b) {
+    return a.value.localeCompare(b.value); // Use 'value' instead of 'text'
+  });
+
+  select.innerHTML = "";
+  options.forEach(function (option) {
+    select.add(option);
+  });
+});
+</script>
 
 
