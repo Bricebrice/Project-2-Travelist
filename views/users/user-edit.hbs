@@ -8,7 +8,7 @@
     <h1 class="text-danger">Edit Profile</h1>
     <hr />
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-5">
         <div class="text-center">
           <div class="thumbnail-container-profile mx-auto">
             <img
@@ -18,13 +18,13 @@
               alt="Post Image Preview"
             />
           </div>
-          <form
+      <form
           action="/userProfile/{{userInSession._id}}/edit"
           method="POST"
           enctype="multipart/form-data"
           class="form-horizontal"
           role="form"
-        >
+          >
           <input type="file" name="profileImage" class="form-control" />
           <input
             type="text"
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="col-md-9 personal-info">
+      <div class="col-md-7 personal-info">
         <h3>Personal info</h3>
 
         
