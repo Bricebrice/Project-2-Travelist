@@ -2,14 +2,8 @@
 
 <br>
 
-![lab-js-basic-algorithms-code-collaboration-gif](https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/lab-js-basic-algorithms-code-collaboration-gif.gif)
-
-<br>
-
 <details>
-  <summary>
    <h2>Description</h2>
-  </summary>
 
 Travelist is an application that allows travelers around the world not only to explore new destinations, but also to create and share travel guides! Discover new itineraries has never been so easy!
 
@@ -98,8 +92,8 @@ As nice-to-haves, we can consider:
   - js
   - stylesheets
 
-
 ## The team
+
 - Omayma Elhadari
 - Brice Cabioch
 
