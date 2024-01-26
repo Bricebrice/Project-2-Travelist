@@ -17,36 +17,35 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
   console.log("The form data: ", req.body);
 
   const { firstName, lastName, username, email, password } = req.body;
-  User.findOne({email})
-  .then((emailFromDB) => {
-    if(!emailFromDB){
+  User.findOne({ email }).then((emailFromDB) => {
+    if (!emailFromDB) {
       bcryptjs
-      .genSalt(saltRounds)
-      .then((salt) => bcryptjs.hash(password, salt))
-      .then((hashedPassword) => {
-        // console.log(`Password hash: ${hashedPassword}`);
-        return User.create({
-          firstName,
-          lastName,
-          username,
-          email,
-          passwordHash: hashedPassword,
-        });
-    })
-    .then((userFromDB) => {
-      // console.log("Newly created user is: ", userFromDB);
-      req.session.currentUser = userFromDB;
-      res.redirect("/userProfile");
-    })
+        .genSalt(saltRounds)
+        .then((salt) => bcryptjs.hash(password, salt))
+        .then((hashedPassword) => {
+          // console.log(`Password hash: ${hashedPassword}`);
+          return User.create({
+            firstName,
+            lastName,
+            username,
+            email,
+            passwordHash: hashedPassword,
+          });
+        })
+        .then((userFromDB) => {
+          // console.log("Newly created user is: ", userFromDB);
+          req.session.currentUser = userFromDB;
+          res.redirect("/userProfile");
+        })
 
-    .catch((error) => next(error));
-
-    }else{
-      res.render("auth/signup", {errorMessage: "It seems this user is already registered!" });
-      return
+        .catch((error) => next(error));
+    } else {
+      res.render("auth/signup", {
+        errorMessage: "It seems this user is already registered!",
+      });
+      return;
     }
   });
-  
 });
 
 // GET route ==> to display the login form to users
@@ -96,8 +95,11 @@ router.get("/userProfile", isLoggedIn, async (req, res) => {
   try {
     const user = await User.findById(req.session.currentUser._id);
     const userPosts = await Post.find({ createdBy: user._id }).exec();
-    
-    res.render("users/user-profile", { userInSession: user, userPosts: userPosts });
+
+    res.render("users/user-profile", {
+      userInSession: user,
+      userPosts: userPosts,
+    });
   } catch (error) {
     console.error("Error fetching user and posts:", error);
     res.redirect("/error"); // Handle error appropriately

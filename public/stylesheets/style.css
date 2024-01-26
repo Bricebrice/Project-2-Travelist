@@ -27,9 +27,9 @@ body {
 
 .jumbotron .container {
   position: relative;
-  z-index: 1; 
-  color: #fff; 
-  text-align: center; 
+  z-index: 1;
+  color: #fff;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -65,14 +65,15 @@ footer p {
 }
 
 /* login and signup styling */
-.signin-container{
+.signin-container {
   padding: 3% 1.5%;
   background-image: url("../images/roadtrip.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-.form-signin, .form-login {
+.form-signin,
+.form-login {
   max-width: 45vw;
   border-radius: 5%;
   padding: 10% 10%;
@@ -86,13 +87,12 @@ footer p {
   z-index: 2;
 }
 
-.login-container{
+.login-container {
   padding: 10% 5%;
   background-image: url("../images/roadtrip.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  
 }
 
 .custom-container {
@@ -103,7 +103,7 @@ footer p {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.create-form-body{
+.create-form-body {
   background: linear-gradient(135deg, #f2cc8f, #f4f1de);
   margin: 0;
   padding: 30px;
@@ -122,22 +122,28 @@ footer p {
   width: 35vw;
 }
 
-.thumbnail-profile{
+.thumbnail-profile {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.thumbnail-container-profile{
+.thumbnail-container-profile {
   width: 300px;
   /* height: 300px; */
 }
 
-.profile-image{
+.profile-image {
   width: 15vw;
   height: 15vw;
   object-fit: cover;
   border-radius: 10%;
 }
 
+.override-text-color-white {
+  color: white !important;
+}
 
+.override-border-color-white {
+  border-color: white !important;
+}

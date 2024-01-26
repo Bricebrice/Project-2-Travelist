@@ -5,8 +5,11 @@
       <hr class="hr" />
       <p class="lead">Explore, create, and share travel guides.</p>
       <p>
-        <a href="/explore/posts" class="btn btn-primary m-2">Explore</a>
-        <a href="/explore/posts/create" class="btn btn-secondary m-2">Create</a>
+        <a href="/explore/posts" class="btn btn-danger sm-2">Explore</a>
+        <a
+          href="/explore/posts/create"
+          class="btn btn-outline-light m-2"
+        >Create</a>
       </p>
     </div>
   </section>
@@ -34,7 +37,7 @@
                 <p class="card-text">{{description}}</p>
 
               </div>
-              <div class="card-footer bg-transparent border-secondary">
+              <div class="card-footer bg-transparent">
                 <div class="d-flex justify-content-between align-items-center">
                   <a
                     class="icon-link icon-link-hover disabled"
@@ -93,62 +96,112 @@
             {{! END CARD }}
           </div>
         {{/each}}
-        <p><a href="/explore/posts" class="btn btn-primary my-2 me-2">Explore
-            all destinations</a></p>
+        <p><a href="/explore/posts" class="btn btn-danger my-2 me-2">Explore all
+            destinations</a></p>
       </div>
     </div>
   </div>
 
   {{! CONTAINER 2 }}
 
-  <div class="album py-5 bg-info">
-    <div class="container" id="icon-grid">
-      <h2 class="mb-4 pb-2 border-bottom text-center">Create a new travel guide</h2>
+  <div class="album py-5 bg-danger text-white bg-gradient">
 
-      <div
-        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5"
-      >
+    <section class="text-center">
+      <div class="container">
+        <h2 class="jumbotron-heading">Create a new travel guide</h2>
+        <hr class="hr" />
 
-        <div class="col d-flex align-items-start">
-          <i class="bi bi-geo-alt-fill"></i>
-          <div>
-            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Select your
-              destination</h3>
-            <p>Choose a location for your travel guide.</p>
+        <div
+          class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5"
+        >
+          <div class="col d-flex align-items-start">
+            <div
+              class="card bg-transparent text-light override-border-color-white"
+              style="width: 18rem;"
+            >
+              <div class="card-body">
+                <h3
+                  class="fw-bold my-2 fs-4 text-body-emphasis override-text-color-white"
+                >Select your destination</h3>
+                <i class="bi bi-geo-alt-fill fs-1"></i>
+
+                {{! <img src="..." class="card-img-top" alt="..." /> }}
+                <div class="card-body">
+                  <p class="card-text">Contribute your insights and
+                    recommendations.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <div class="col d-flex align-items-start">
+            <div
+              class="card bg-transparent text-light override-border-color-white"
+              style="width: 18rem;"
+            >
+              <div class="card-body">
+                <h3
+                  class="fw-bold my-2 fs-4 text-body-emphasis override-text-color-white"
+                >Discover new places</h3>
+                <i class="bi bi-compass-fill fs-1"></i>
+
+                <div class="card-body">
+                  <p class="card-text">Explore and find exciting destinations
+                    for your guide
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <div
+              class="card bg-transparent text-light override-border-color-white"
+              style="width: 18rem;"
+            >
+              <div class="card-body">
+                <h3
+                  class="fw-bold my-2 fs-4 text-body-emphasis override-text-color-white"
+                >Set your trip duration</h3>
+                <i class="bi bi-calendar-range-fill fs-1"></i>
+
+                <div class="card-body">
+                  <p class="card-text">Define the duration of your travel guide.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <div
+              class="card bg-transparent text-light override-border-color-white"
+              style="width: 18rem;"
+            >
+              <div class="card-body">
+                <h3
+                  class="fw-bold my-2 fs-4 text-body-emphasis override-text-color-white"
+                >Share your travel tips</h3>
+                <i class="bi bi-person-fill-add fs-1"></i>
+
+                <div class="card-body">
+                  <p class="card-text">Contribute your insights and
+                    recommendations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <div class="col d-flex align-items-start">
-          <i class="bi bi-geo-alt-fill"></i>
-          <div>
-            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Set your trip
-              duration</h3>
-            <p>Define the duration of your travel guide.</p>
-          </div>
-        </div>
-
-        <div class="col d-flex align-items-start">
-          <i class="bi bi-geo-alt-fill"></i>
-          <div>
-            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Share your travel
-              tips</h3>
-            <p>Contribute your insights and recommendations.</p>
-          </div>
-        </div>
-
-        <div class="col d-flex align-items-start">
-          <i class="bi bi-geo-alt-fill"></i>
-          <div>
-            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Discover new places</h3>
-            <p>Explore and find exciting destinations for your guide.</p>
-          </div>
-        </div>
+        <p class="text-center"><a
+            href="/explore/posts/create"
+            class="btn btn-outline-light mx-auto"
+          >Create new travel guide</a></p>
       </div>
-      <p class="text-center"><a
-          href="/explore/posts/create"
-          class="btn btn-primary mx-auto"
-        >Create new travel guide</a></p>
-    </div>
+    </section>
 
   </div>
 
