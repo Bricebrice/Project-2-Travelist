@@ -1,66 +1,114 @@
-
-<div class="container mt-5" style="width: 80vw; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding:3%">
-  <div class="row ">
+<div
+  class="container mt-5"
+  style="width: 80vw; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding:3%"
+>
+  <div class="row">
 
     <div class="col-md-12 mb-5">
       <div class="row align-items-center">
 
         <div class="col-md-3">
-          <img src="{{userInSession.profileImage}}" class="img-fluid profile-image" alt="User Profile Image">
+          <img
+            src="{{userInSession.profileImage}}"
+            class="img-fluid profile-image"
+            alt="User Profile Image"
+          />
         </div>
 
         <div class="col-md-9 text-left">
           <h3>{{userInSession.firstName}} {{userInSession.lastName}}</h3>
           <p>@{{userInSession.username}}</p>
-          <button class="btn btn-danger mt-2"><a href="/userProfile/{{userInSession._id}}/edit" style="color: white; text-decoration:none">Update Profile</a></button>
+          <button class="btn btn-danger mt-2"><a
+              href="/userProfile/{{userInSession._id}}/edit"
+              style="color: white; text-decoration:none"
+            >Update Profile</a></button>
         </div>
       </div>
     </div>
 
-
     <div class="col-md-12">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" id="about-tab" data-bs-toggle="tab" href="#about">About Me</a>
+          <a
+            class="nav-link active"
+            id="about-tab"
+            data-bs-toggle="tab"
+            href="#about"
+          >About Me</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="posts-tab" data-bs-toggle="tab" href="#posts" style="color: #dc3545;">Created Posts</a>
+          <a
+            class="nav-link"
+            id="posts-tab"
+            data-bs-toggle="tab"
+            href="#posts"
+            style="color: #dc3545;"
+          >Created Posts</a>
         </li>
       </ul>
-      <div class="tab-content m-3 ">
+      <div class="tab-content m-3">
 
         <div class="tab-pane fade show active" id="about">
-            <h5>First Name</h5>
-            <p>{{userInSession.firstName}}</p>
-             <h5>Last Name</h5>
-            <p>{{userInSession.lastName}}</p>
-             <h5>UserID</h5>
-            <p>{{userInSession.username}}</p>
-             <h5>E-Mail</h5>
-            <p>{{userInSession.email}}</p>
+          <h5>First Name</h5>
+          <p>{{userInSession.firstName}}</p>
+          <h5>Last Name</h5>
+          <p>{{userInSession.lastName}}</p>
+          <h5>UserID</h5>
+          <p>{{userInSession.username}}</p>
+          <h5>E-Mail</h5>
+          <p>{{userInSession.email}}</p>
         </div>
 
-        <div class="tab-pane fade" id="posts" >
+        <div class="tab-pane fade" id="posts">
           <div class="row justify-content-center">
-            {{#each userPosts}}
-              <div class="card mb-4 box-shadow" style="width:30vw; padding: 0 5px">
-                <img class="card-img-top p-3"  style="width:100%;" src="{{this.image}}" alt="Card image cap" />
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <h3 class="mb-2"><a href="/explore/posts/{{this._id}}" style="text-decoration:none">{{this.location}}</a></h3>
+
+            <div class="container">
+              <h2 class="mb-4">My posts</h2>
+              <div class="row">
+                {{#if userPosts.length}}
+                  {{#each userPosts}}
+                    <div class="col-md-4">
+                      {{! CARD }}
+                      <div class="card mb-4 box-shadow">
+                        <a
+                          href="/explore/posts/{{id}}"
+                          class="stretched-link"
+                        ></a>
+
+                        <img
+                          class="card-img-top"
+                          src="{{image}}"
+                          alt="Card image cap"
+                        />
+                        <div class="card-body">
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <div class="btn-group">
+                              <h3 class="mb-2">{{location}}</h3>
+                            </div>
+                            <small class="text-muted mb-2">{{duration}}
+                              days</small>
+                          </div>
+                          <p class="card-text">{{description}}</p>
+                        </div>
+                      </div>
+                      {{! END CARD }}
                     </div>
-                    <small class="text-muted mb-2">{{this.duration}} days</small>
-                  </div>
-                  <p class="card-text">{{this.description}}</p>
-                </div>
+                  {{/each}}
+                {{else}}
+                  <h2 class="mb-4">There are no posts yet!</h2>
+                {{/if}}
+                <p><a
+                    href="/explore/posts/create"
+                    class="btn btn-danger my-2 me-2"
+                  >Create new post</a>
+                </p>
               </div>
-            {{/each}}
+            </div>
           </div>
-          <button class="btn btn-danger mt-2"><a href="/explore/posts/create" style="color: white; text-decoration:none">Create new post</a></button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
