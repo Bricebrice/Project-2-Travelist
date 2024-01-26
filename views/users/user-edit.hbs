@@ -1,47 +1,85 @@
-<div style="  width: 100vw;
+<div
+  style="  width: 100vw;
   background: #ffffff;
   padding: 60px;
-  border-radius: 10px;">
-<div class="container bootstrap snippets bootdey">
+  border-radius: 10px;"
+>
+  <div class="container bootstrap snippets bootdey">
     <h1 class="text-danger">Edit Profile</h1>
-      <hr>
-	<div class="row">
+    <hr />
+    <div class="row">
       <div class="col-md-3">
         <div class="text-center">
-             <div class="thumbnail-container-profile mx-auto" >
-                <img id="imagePreview" class="thumbnail-profile mb-3" src="{{userInSession.profileImage}}" alt="Post Image Preview">
-              </div>
+          <div class="thumbnail-container-profile mx-auto">
+            <img
+              id="imagePreview"
+              class="thumbnail-profile mb-3"
+              src="{{userInSession.profileImage}}"
+              alt="Post Image Preview"
+            />
+          </div>
+          <form
+          action="/userProfile/{{userInSession._id}}/edit"
+          method="POST"
+          enctype="multipart/form-data"
+          class="form-horizontal"
+          role="form"
+        >
           <input type="file" name="profileImage" class="form-control" />
-          <input type="text" name="existingImage" hidden value="{{userInSession.profileImage}}">
+          <input
+            type="text"
+            name="existingImage"
+            hidden
+            value="{{userInSession.profileImage}}"
+          />
         </div>
       </div>
-      
+
       <div class="col-md-9 personal-info">
         <h3>Personal info</h3>
+
         
-        <form action="/userProfile/{{userInSession._id}}/edit" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
           <div class="mb-3">
             <label class="col-lg-3 control-label form-label">First name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" name="firstName" placeholder="James" value="{{userInSession.firstName}}">
+              <input
+                class="form-control"
+                type="text"
+                name="firstName"
+                placeholder="James"
+                value="{{userInSession.firstName}}"
+              />
             </div>
           </div>
           <div class="mb-3">
             <label class="col-lg-3 control-label form-label">Last name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" name="lastName" placeholder="Cook"  value="{{userInSession.lastName}}">
+              <input
+                class="form-control"
+                type="text"
+                name="lastName"
+                placeholder="Cook"
+                value="{{userInSession.lastName}}"
+              />
             </div>
           </div>
           <div class="mb-3">
             <label class="col-lg-3 control-label form-label">Username:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" name="username" placeholder="James Cookies"  value="{{userInSession.username}}" required>
+              <input
+                class="form-control"
+                type="text"
+                name="username"
+                placeholder="James Cookies"
+                value="{{userInSession.username}}"
+                required
+              />
             </div>
           </div>
-          <button type="submit" class="btn btn-outline-dange">Save changes</button>
+          <button type="submit" class="btn btn-outline-danger">Save changes</button>
         </form>
       </div>
+    </div>
   </div>
 </div>
-</div>
-<hr>
+<hr />

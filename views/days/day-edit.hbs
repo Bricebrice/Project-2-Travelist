@@ -1,37 +1,68 @@
 <div class="create-form-body">
-<div class="custom-container mt-5">
-  <h3>Edit Day Itinerary</h3>
+  <div class="custom-container mt-5">
+    <h3>Edit Day Itinerary</h3>
 
-  <form action="/explore/posts/{{post._id}}/itinerary/{{day._id}}/edit" method="POST" enctype="multipart/form-data">
+    <form
+      action="/explore/posts/{{post._id}}/itinerary/{{day._id}}/edit"
+      method="POST"
+      enctype="multipart/form-data"
+    >
 
-    <div class="mb-3">
-      <label for="title" class="form-label">Title:</label>
-      <input type="text" class="form-control" name="title" placeholder="Add title" value="{{day.title}}">
-    </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          placeholder="Add title"
+          value="{{day.title}}"
+        />
+      </div>
 
-    <div class="mb-3">
-      <label for="location"class="form-label">Location:</label>
-      <input type="text" class="form-control" name="location" placeholder="Add location" value="{{day.location}}">
-    </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="location"
+          placeholder="Add location"
+          value="{{day.location}}"
+        />
+      </div>
 
-    <div class="mb-3">
-      <label for="description"class="form-label">Description:</label>
-      <textarea class="form-control" name="description" rows="10" cols="45">{{day.description}}</textarea>
-    </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea
+          class="form-control"
+          name="description"
+          rows="10"
+          cols="45"
+        >{{day.description}}</textarea>
+      </div>
 
-    <div class="mb-3">
-      <label for="image"class="form-label">Image:</label>
-        <div class="thumbnail-container">          
-          <img id="imagePreview" class="thumbnail" src="{{day.image}}" alt="Post Image Preview">
+      <div class="mb-3">
+        <label for="image" class="form-label">Image:</label>
+        <div class="thumbnail-container">
+          <img
+            id="imagePreview"
+            class="thumbnail"
+            src="{{day.image}}"
+            alt="Post Image Preview"
+          />
         </div>
         <div class="mb-3">
           <label for="formFile" class="form-label"></label>
-          <input class="form-control " type="file" id="formFile" name="dayImage">
+          <input
+            class="form-control"
+            type="file"
+            id="formFile"
+            name="dayImage"
+          />
         </div>
-      <input type="text" name="existingImage" hidden value="{{day.image}}" />
-    </div>
+        <input type="text" name="existingImage" hidden value="{{day.image}}" />
+      </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>
