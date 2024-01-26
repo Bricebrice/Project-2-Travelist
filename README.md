@@ -2,15 +2,12 @@
 
 <br>
 
-<details>
    <h2>Description</h2>
 
 Travelist is an application that allows travelers around the world not only to explore new destinations, but also to create and share travel guides! Discover new itineraries has never been so easy!
 
   <br>
   <hr>
-
-</details>
 
 ## Main functionalities
 
