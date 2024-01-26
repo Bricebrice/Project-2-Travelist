@@ -6,6 +6,7 @@ const { Router } = require("express");
 const router = new Router();
 
 const bcryptjs = require("bcryptjs");
+const Post = require("../models/Post.model.js");
 const saltRounds = 10;
 
 // GET signup route ==> to display the signup form to users
@@ -86,9 +87,21 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     .catch((error) => next(error));
 });
 
-// GET route ==> to redirect to user profile
-router.get("/userProfile", isLoggedIn, (req, res) => {
-  res.render("users/user-profile", { userInSession: req.session.currentUser });
+// // GET route ==> to redirect to user profile
+// router.get("/userProfile", isLoggedIn, (req, res) => {
+//   res.render("users/user-profile", { userInSession: req.session.currentUser });
+// });
+
+router.get("/userProfile", isLoggedIn, async (req, res) => {
+  try {
+    const user = await User.findById(req.session.currentUser._id);
+    const userPosts = await Post.find({ createdBy: user._id }).exec();
+    
+    res.render("users/user-profile", { userInSession: user, userPosts: userPosts });
+  } catch (error) {
+    console.error("Error fetching user and posts:", error);
+    res.redirect("/error"); // Handle error appropriately
+  }
 });
 
 // POST route ==> to logout and kill the session

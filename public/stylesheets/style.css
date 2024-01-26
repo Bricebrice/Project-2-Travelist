@@ -132,3 +132,12 @@ footer p {
   width: 300px;
   /* height: 300px; */
 }
+
+.profile-image{
+  width: 15vw;
+  height: 15vw;
+  object-fit: cover;
+  border-radius: 10%;
+}
+
+
