@@ -12,7 +12,6 @@ const fileUploader = require("../config/cloudinary.config");
 //GET route to view posts in explore page
 router.get("/explore/posts", (req, res) => {
   Post.find()
-    .populate("createdBy")
     .then((postsFromDB) => {
       res.render("posts/post-list", {
         post: postsFromDB,
@@ -27,10 +26,7 @@ router.get("/explore/posts/create", isLoggedIn, (req, res) => {
   Country.find()
     .then((countriesFromDB) => {
       // console.log("countriesFromDB are: ", countriesFromDB);
-      res.render("posts/post-create", {
-        countries: countriesFromDB,
-        userInSession: req.session.currentUser,
-      });
+      res.render("posts/post-create", { countries: countriesFromDB , userInSession: req.session.currentUser});
     })
     .catch((err) => console.log(err));
 });
@@ -56,7 +52,7 @@ router.post(
 
     Post.create({
       title,
-      image: req.file.path,
+      image,
       location,
       description,
       duration,
@@ -90,11 +86,7 @@ router.get("/explore/posts/:postId/edit", isLoggedIn, (req, res, next) => {
   Post.findById(postId)
     .then((postToEdit) => {
       Country.find().then((countries) => {
-        res.render("posts/post-edit", {
-          post: postToEdit,
-          countries,
-          userInSession: req.session.currentUser,
-        });
+        res.render("posts/post-edit", { post: postToEdit, countries, userInSession: req.session.currentUser});
       });
     })
     .catch((err) => next(err));
@@ -155,10 +147,7 @@ router.get("/explore/posts/:postId", (req, res) => {
     .populate("itinerary")
     .then((postFromDB) => {
       console.log("post from db", postFromDB);
-      res.render("posts/post-view", {
-        post: postFromDB,
-        userInSession: req.session.currentUser,
-      });
+      res.render("posts/post-view", { post: postFromDB, userInSession: req.session.currentUser });
     });
 });
 
