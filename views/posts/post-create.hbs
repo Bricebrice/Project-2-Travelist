@@ -1,22 +1,35 @@
-
-<div  class="create-form-body">
+<div class="create-form-body">
   <div class="custom-container mt-5">
     <h3>Create a new post</h3>
 
-    <form action="/explore/posts/create" method="post" enctype="multipart/form-data">
+    <form
+      action="/explore/posts/create"
+      method="post"
+      enctype="multipart/form-data"
+    >
 
       <div class="mb-3">
         <label for="title" class="form-label">Title:</label>
-        <input type="text" class="form-control" name="title" placeholder="Add travel title">
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          placeholder="Add travel title"
+        />
       </div>
 
       <div class="mb-3">
         <label for="image" class="form-label">Image:</label>
-        <input type="file" class="form-control" name="image" placeholder="Add an image">
+        <input
+          type="file"
+          class="form-control"
+          name="image"
+          placeholder="Add an image"
+        />
       </div>
 
       <div class="mb-3">
-        <label for="location"class="form-label">Location:</label>
+        <label for="location" class="form-label">Location:</label>
         <select class="form-control" id="location" name="location">
           {{#each countries}}
             <option value="{{name}}">{{name}}</option>
@@ -25,24 +38,34 @@
       </div>
 
       <div class="mb-3">
-        <label for="description"class="form-label">Description:</label>
+        <label for="description" class="form-label">Description:</label>
         <textarea class="form-control" name="description" rows="5"></textarea>
       </div>
 
       <div class="mb-3">
-        <label for="duration"class="form-label">Duration:</label>
-        <input type="number" class="form-control" name="duration" placeholder="Add duration in days">
+        <label for="duration" class="form-label">Duration:</label>
+        <input
+          type="number"
+          class="form-control"
+          name="duration"
+          placeholder="Add duration in days"
+        />
       </div>
 
       <div class="mb-3">
-        <label for="distance"class="form-label">Distance:</label>
-        <input type="number" class="form-control" name="distance" placeholder="Add distance in km">
+        <label for="distance" class="form-label">Distance:</label>
+        <input
+          type="number"
+          class="form-control"
+          name="distance"
+          placeholder="Add distance in km"
+        />
       </div>
 
       <div class="mb-3">
-        <label for="typeOfTrip"class="form-label">Type of Trip:</label>
-        <select class="form-select" name="typeOfTrip" multiple >
-          <option >Escape trip</option>
+        <label for="typeOfTrip" class="form-label">Type of Trip:</label>
+        <select class="form-select" name="typeOfTrip" multiple>
+          <option>Escape trip</option>
           <option>Spa trip</option>
           <option>Honeymoon</option>
           <option>Cultural Trip</option>
@@ -51,21 +74,35 @@
       </div>
 
       <div id="dayContainer">
-        <h2>Itinerary</h2>
+        <h3>Itinerary</h3>
 
         <div class="mb-3">
-          <label for="dayTitle"class="form-label">Title:</label>
-          <input type="text" class="form-control" name="dayTitle" placeholder="Add title">
+          <label for="dayTitle" class="form-label">Title:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="dayTitle"
+            placeholder="Add title"
+          />
         </div>
 
         <div class="mb-3">
-          <label for="dayLocation"class="form-label">Location:</label>
-          <input type="text" class="form-control" name="dayLocation" placeholder="Add location">
+          <label for="dayLocation" class="form-label">Location:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="dayLocation"
+            placeholder="Add location"
+          />
         </div>
 
         <div class="mb-3">
-          <label for="dayDescription"class="form-label">Description:</label>
-          <textarea class="form-control" name="dayDescription" rows="5"></textarea>
+          <label for="dayDescription" class="form-label">Description:</label>
+          <textarea
+            class="form-control"
+            name="dayDescription"
+            rows="5"
+          ></textarea>
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Create post</button>
@@ -75,19 +112,9 @@
 </div>
 
 <script>
- document.addEventListener('DOMContentLoaded', function () {
-  var select = document.getElementById('location');
-  var options = Array.from(select.options);
-
-  options.sort(function (a, b) {
-    return a.value.localeCompare(b.value); // Use 'value' instead of 'text'
-  });
-
-  select.innerHTML = "";
-  options.forEach(function (option) {
-    select.add(option);
-  });
-});
+  document.addEventListener('DOMContentLoaded', function () { var select =
+  document.getElementById('location'); var options = Array.from(select.options);
+  options.sort(function (a, b) { return a.value.localeCompare(b.value); // Use
+  'value' instead of 'text' }); select.innerHTML = ""; options.forEach(function
+  (option) { select.add(option); }); });
 </script>
-
-
