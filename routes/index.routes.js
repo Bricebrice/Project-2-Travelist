@@ -5,14 +5,21 @@ const Post = require("../models/Post.model");
 const User = require("../models/User.model");
 
 /* GET home page */
-router.get("/", (req, res, next) => {
-  Post.find()
-    .then((postsFromDB) => {
-      res.render("index", {
-        post: postsFromDB,
-        userInSession: req.session.currentUser,
-      });
-    })
+router.get("/", async (req, res, next) => {
+  try {
+    // Retrieve all posts from the db
+    const postsFromDB = await Post.find();
+
+    // Only 3 posts
+    const limitedPosts = postsFromDB.slice(0, 3);
+
+    res.render("index", {
+      post: limitedPosts,
+      userInSession: req.session.currentUser,
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;
