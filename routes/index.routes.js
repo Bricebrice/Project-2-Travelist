@@ -7,8 +7,8 @@ const User = require("../models/User.model");
 /* GET home page */
 router.get("/", async (req, res, next) => {
   try {
-    // Retrieve all posts from the db
-    const postsFromDB = await Post.find();
+    // Retrieve all posts from the db and populate the createdBy to retrieve the user
+    const postsFromDB = await Post.find().populate("createdBy");
 
     // Only 3 posts
     const limitedPosts = postsFromDB.slice(0, 3);
