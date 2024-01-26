@@ -1,19 +1,31 @@
-<h2>{{post.title}}</h2>
-<img src="{{post.image}}" />
-<p>{{post.location}}</p>
-<p>{{post.description}}</p>
-<p>{{post.duration}} days</p>
-<p>{{post.distance}} kms</p>
-{{#each post.typeOfTrip}}
-  <li>{{this}}</li>
-{{/each}}
-<h4>Itinerary</h4>
-{{#each post.itinerary}}
-  <p>{{this.title}}</p>
-  <p>{{this.location}}</p>
-  <p>{{this.description}}</p>
-  <img src="{{this.image}}" />
-  <button><a href="/explore/posts/{{../post._id}}/itinerary/{{this._id}}/edit">Edit
-      Day</a></button>
-{{/each}}
-<button><a href="/explore/posts/{{post._id}}/edit">Edit post</a></button>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2 class="mb-4">{{post.title}}</h2>
+      <img src="{{post.image}}" class="img-fluid mb-4" alt="Post Image">
+      <p><strong>Location:</strong> {{post.location}}</p>
+      <p><strong>Description:</strong> {{post.description}}</p>
+      <p><strong>Duration:</strong> {{post.duration}} days</p>
+      <p><strong>Distance:</strong> {{post.distance}} kms</p>
+      <p><strong>Types of trip:</strong>
+        {{#each post.typeOfTrip}}
+          <span class="badge text-bg-secondary">{{this}}</span>
+          
+        {{/each}}
+        </p>
+      <h4>Itinerary</h4>
+      {{#each post.itinerary}}
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Day {{@index }}: {{this.title}}</h5>
+            <p class="card-text"><strong>Location:</strong> {{this.location}}</p>
+            <p class="card-text"><strong>Description:</strong> {{this.description}}</p>
+            <img src="{{this.image}}" class="img-fluid mb-2" alt="Day Image">
+            <a href="/explore/posts/{{../post._id}}/itinerary/{{this._id}}/edit" class="btn btn-outline-danger">Edit Day</a>
+          </div>
+        </div>
+      {{/each}}
+      <a href="/explore/posts/{{post._id}}/edit" class="btn btn-danger mt-3">Edit Post</a>
+    </div>
+  </div>
+</div>
