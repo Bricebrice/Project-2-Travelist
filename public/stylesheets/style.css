@@ -113,13 +113,13 @@ footer p {
 }
 
 .thumbnail-container {
-  width: 35vw;
+  width: 25vw;
   overflow: hidden;
   border: 1px solid #ccc;
 }
 
 .thumbnail {
-  width: 35vw;
+  width: 25vw;
 }
 
 .thumbnail-profile {
