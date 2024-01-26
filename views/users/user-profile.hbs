@@ -48,7 +48,7 @@
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <h3 class="mb-2"><a href="/explore/posts/{{this._id}}">{{this.title}}</a></h3>
+                      <h3 class="mb-2"><a href="/explore/posts/{{this._id}}" style="text-decoration:none">{{this.title}}</a></h3>
                     </div>
                     <small class="text-muted mb-2">{{this.duration}} days</small>
                   </div>
@@ -57,6 +57,7 @@
               </div>
             {{/each}}
           </div>
+          <button class="btn btn-primary mt-2"><a href="/explore/posts/create" style="color: white; text-decoration:none">Create new post</a></button>
         </div>
       </div>
     </div>
