@@ -112,9 +112,17 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () { var select =
-  document.getElementById('location'); var options = Array.from(select.options);
-  options.sort(function (a, b) { return a.value.localeCompare(b.value); // Use
-  'value' instead of 'text' }); select.innerHTML = ""; options.forEach(function
-  (option) { select.add(option); }); });
+    document.addEventListener('DOMContentLoaded', function () {
+    var select = document.getElementById('location');
+    var options = Array.from(select.options);
+
+    options.sort(function (a, b) {
+      return a.value.localeCompare(b.value);
+    });
+
+    select.innerHTML = "";
+    options.forEach(function (option) {
+      select.add(option);
+    });
+  });
 </script>
