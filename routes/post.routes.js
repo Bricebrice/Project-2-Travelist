@@ -56,7 +56,7 @@ router.post(
 
     Post.create({
       title,
-      image,
+      image: req.file.path,
       location,
       description,
       duration,
@@ -129,7 +129,7 @@ router.post(
       postId,
       {
         title,
-        postImage,
+        image: postImage,
         location,
         description,
         duration,
